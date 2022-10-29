@@ -11,34 +11,24 @@
 
 1. Make sure you have the project dependencies listed above installed on your machine.
 2. Clone this repo:
-   ```
+   ```bash
    git clone git@github.com:sephraim/carton_caps_api.git
    cd carton_caps_api/
    ```
-3. Create a `.env` file:
-   ```
-   cp .env.example .env
-   ```
-4. Create a MySQL volume:
-   ```
-   docker volume create carton-caps-api-mysql
+3. Run the local development setup script:
+   ```bash
+   ./local-dev-init.sh
    ```
 
 ## Getting started
 
-### 1. Build images
-
-```bash
-docker compose build
-```
-
-### 2. Start containers
+### 1. Start containers
 
 ```bash
 docker compose up -d
 ```
 
-### 3. Check that it's working
+### 2. Check that it's working
 
 To view the logs, run:
 ```bash
@@ -52,9 +42,9 @@ carton-caps-api-web  | Use Ctrl-C to stop
 ```
 Press `Ctrl-C` to stop viewing the logs.
 
-### 4. TODO Make a request
+### 3. TODO Make a request
 
-### 5. Stop & destroy containers
+### 4. Stop & destroy containers
 
 ```bash
 docker compose down
