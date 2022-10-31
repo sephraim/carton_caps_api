@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -u
+
+# Restart the web service only
+
+# NOTE: You can also use `docker compose restart web` but that won't take new .env file changes into account
+
+docker compose stop web
+docker compose rm -f web
+docker compose up -d web

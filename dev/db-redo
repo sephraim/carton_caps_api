@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -eu
+
+# Re-create the development/test databases (including seeds) && db/schema.rb
+
+# Remove current schema file
+rm -rf db/schema.rb
+
+# Remove and then re-create the development/test databases (including seeds)
+docker compose run --rm web wait-for-it --strict --timeout=30 db:3306 -- bin/rails db:drop db:create db:migrate db:seed

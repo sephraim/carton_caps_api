@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -u
+
+# Stop & remove the web service only
+
+# NOTE: You can also use `docker compose down` but that will stop/remove *all* services
+
+docker compose stop web
+docker compose rm -f web

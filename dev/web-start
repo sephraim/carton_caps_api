@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -u
+
+# Start the web service (as well as any dependent services)
+
+docker compose up -d web

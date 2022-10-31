@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -eu
+
+# Create the database
+
+docker compose run --rm web wait-for-it --strict --timeout=30 db:3306 -- bin/rails db:create

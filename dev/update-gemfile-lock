@@ -2,5 +2,7 @@
 
 set -eu
 
+# Update Gemfile.lock and rebuild image(s)
+
 docker compose run --no-deps --rm web bundle install
 docker compose build
