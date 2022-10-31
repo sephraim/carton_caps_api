@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_31_052703) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_31_054827) do
   create_table "referrals", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "referrer_id", null: false
     t.bigint "referee_id", null: false
-    t.datetime "completed_at"
+    t.datetime "completed_at", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["referee_id"], name: "index_referrals_on_referee_id"
@@ -22,11 +22,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_31_052703) do
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.date "birthdate"
-    t.integer "zip_code"
-    t.string "referral_code"
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.date "birthdate", null: false
+    t.integer "zip_code", null: false
+    t.string "referral_code", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
