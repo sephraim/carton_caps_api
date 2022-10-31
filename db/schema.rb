@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_29_184435) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_31_052703) do
+  create_table "referrals", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "referrer_id", null: false
+    t.bigint "referee_id", null: false
+    t.datetime "completed_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["referee_id"], name: "index_referrals_on_referee_id"
+    t.index ["referrer_id"], name: "index_referrals_on_referrer_id"
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -21,4 +31,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_29_184435) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "referrals", "users", column: "referee_id"
+  add_foreign_key "referrals", "users", column: "referrer_id"
 end
