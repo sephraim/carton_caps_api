@@ -2,8 +2,8 @@ class CreateReferrals < ActiveRecord::Migration[7.0]
   def change
     create_table :referrals do |t|
       t.references :referrer, null: false
-      t.references :referee, null: false
-      t.datetime :completed_at
+      t.references :referee, null: false, index: { unique: true }
+      t.datetime :completed_at, null: false
 
       t.timestamps
     end
