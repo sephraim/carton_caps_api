@@ -1,4 +1,4 @@
-class ReferralsController < ApplicationController
+class Api::V1::ReferralsController < ApplicationController
   before_action :set_referral, only: %i[ show update destroy ]
 
   # GET /referrals
