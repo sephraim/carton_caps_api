@@ -1,19 +1,19 @@
 class Api::V1::ReferralsController < ApplicationController
   before_action :set_referral, only: %i[ show update destroy ]
 
-  # GET /referrals
+  # GET api/v1/referrals
   def index
     @referrals = Referral.where(params.permit(:referrer_id, :referee_id))
 
     render json: @referrals
   end
 
-  # GET /referrals/1
+  # GET api/v1/referrals/1
   def show
     render json: @referral
   end
 
-  # POST /referrals
+  # POST api/v1/referrals
   def create
     @referral = Referral.new(referral_params)
 
@@ -24,7 +24,7 @@ class Api::V1::ReferralsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /referrals/1
+  # PATCH/PUT api/v1/referrals/1
   def update
     if @referral.update(referral_params)
       render json: @referral
@@ -33,7 +33,7 @@ class Api::V1::ReferralsController < ApplicationController
     end
   end
 
-  # DELETE /referrals/1
+  # DELETE api/v1/referrals/1
   def destroy
     @referral.destroy
   end
