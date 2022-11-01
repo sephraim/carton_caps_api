@@ -3,7 +3,7 @@ class Api::V1::ReferralsController < ApplicationController
 
   # GET /referrals
   def index
-    @referrals = Referral.all
+    @referrals = Referral.where(params.permit(:referrer_id, :referee_id))
 
     render json: @referrals
   end
