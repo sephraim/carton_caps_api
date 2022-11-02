@@ -1,8 +1,15 @@
 # Carton Caps API
 
+## About
+
+TODO
+
 ## Prerequisites
 
 ### Project dependencies
+
+All local development and testing is done using Docker,
+so the following must be installed on your machine in order to run the API:
 
 - [Docker](https://docs.docker.com/engine/install/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
@@ -17,7 +24,7 @@
    ```
 3. Run the local development setup script:
    ```bash
-   ./local-dev-init.sh
+   dev/app-init
    ```
 
 ## Getting started
@@ -25,14 +32,14 @@
 ### 1. Start containers
 
 ```bash
-docker compose up -d
+dev/start
 ```
 
 ### 2. Check that it's working
 
-To view the logs, run:
+To view and follow the logs, run:
 ```bash
-docker compose logs -f
+dev/logs
 ```
 
 You will know that the API is ready to use when you see the following message:
@@ -47,16 +54,17 @@ Press `Ctrl-C` to stop viewing the logs.
 ### 4. Stop & destroy containers
 
 ```bash
-docker compose down
+dev/stop
 ```
 
-## TODO: View the docs / make some requests
+## View the docs / make some requests
 
-## TODO: Testing
+TODO
 
-#### Healthcheck & testing
+## Run tests
 
-At this point, the application should now be ready to use, and you can visit the [healthcheck endpoint] to ensure it's working properly.
+Tests can be run using the following command:
 
-Additionally, creating a containerized environment for this project is useful for testing and debugging.
-You can shell into the `web` container and [run your tests] there.
+```bash
+dev/test
+```

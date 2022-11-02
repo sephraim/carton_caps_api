@@ -2,7 +2,7 @@
 
 set -u
 
-# Reset the Carton Caps API so that ./init.sh can be run again
+# Reset the Carton Caps API so that dev/app-init can be run again
 
 # Stop remaining service(s) & destroy containers
 docker compose down
