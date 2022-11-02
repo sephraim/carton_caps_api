@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -u
+
+# Follow the logs
+
+docker compose logs -f

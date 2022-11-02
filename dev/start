@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -u
+
+# Start all services
+
+docker compose up -d
