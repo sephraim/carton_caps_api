@@ -5,11 +5,11 @@ one:
   last_name: MyString
   birthdate: 2022-10-29
   zip_code: 1
-  referral_code: MyString
+  referral_code: MyString1
 
 two:
   first_name: MyString
   last_name: MyString
   birthdate: 2022-10-29
   zip_code: 1
-  referral_code: MyString
+  referral_code: MyString2
