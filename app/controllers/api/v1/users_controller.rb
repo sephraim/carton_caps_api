@@ -17,8 +17,19 @@ class Api::V1::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    if @user.save
-      render json: @user, status: :created, location: @user
+    if params.include?(:referral_code_used)
+      if valid_referral_code?
+        if @user.save
+          create_referral
+          render json: @user, status: :created, location: api_v1_user_path(@user)
+        else
+          render json: @user.errors, status: :unprocessable_entity
+        end
+      else
+        render json: 'Referral code used is invalid.', status: :unprocessable_entity
+      end
+    elsif @user.save
+      render json: @user, status: :created, location: api_v1_user_path(@user)
     else
       render json: @user.errors, status: :unprocessable_entity
     end
@@ -61,6 +72,20 @@ class Api::V1::UsersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :birthdate, :zip_code, :referral_code)
+    params.require(:user).permit(:first_name, :last_name, :birthdate, :zip_code)
+  end
+
+  # Validate referral code
+  #
+  # @return [Boolean] true if referral code is valid; else false
+  def valid_referral_code?
+    @referral_code_used = params[:referral_code_used]
+    @referrer = User.find_by(referral_code: @referral_code_used)
+    @referrer.present?
+  end
+
+  # Create a new referral record if user used a valid referral code
+  def create_referral
+    Referral.create(referrer_id: @referrer.id, referee_id: @user.id) if @referrer.present?
   end
 end
