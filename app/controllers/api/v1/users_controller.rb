@@ -26,7 +26,7 @@ class Api::V1::UsersController < ApplicationController
           render json: @user.errors, status: :unprocessable_entity
         end
       else
-        render json: 'Referral code used is invalid.', status: :unprocessable_entity
+        render json: 'Invalid referral code used.', status: :unprocessable_entity
       end
     elsif @user.save
       render json: @user, status: :created, location: api_v1_user_path(@user)
@@ -51,16 +51,12 @@ class Api::V1::UsersController < ApplicationController
 
   # GET api/v1/users/1/referees
   def referees
-    @referees = @user.referees
-
-    render json: @referees, include: [:referee]
+    render json: @user, serializer: Api::V1::UserAsReferrerSerializer
   end
 
   # GET api/v1/users/1/referrer
   def referrer
-    @referrer = @user.referrer
-
-    render json: @referrer, include: [:referrer]
+    render json: @user, serializer: Api::V1::UserAsRefereeSerializer
   end
 
   private
