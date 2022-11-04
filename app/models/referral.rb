@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Referral class
 class Referral < ApplicationRecord
   before_create :set_completed_at_time
 

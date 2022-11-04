@@ -1,20 +1,27 @@
-class Api::V1::UserAsRefereeSerializer < ApplicationSerializer
-  attributes :referrer, :referees
+# frozen_string_literal: true
 
-  # Current user's referrer
-  def referrer
-    Api::V1::UserSerializer.new(referrer_user)
-  end
+module Api
+  module V1
+    # User (w/r/t being a referee) serializer
+    class UserAsRefereeSerializer < ApplicationSerializer
+      attributes :referrer, :referees
 
-  # Current user's referrer's referees (including current user)
-  def referees
-    referrer_user.referees.map { |r| Api::V1::UserSerializer.new(User.find(r.referee_id)) }
-  end
+      # Current user's referrer
+      def referrer
+        Api::V1::UserSerializer.new(referrer_user)
+      end
 
-  private
+      # Current user's referrer's referees (including current user)
+      def referees
+        referrer_user.referees.map { |r| Api::V1::UserSerializer.new(User.find(r.referee_id)) }
+      end
 
-  # Find current user's referrer
-  def referrer_user
-    @referrer_user ||= User.find(object.referrer.referrer_id)
+      private
+
+      # Find current user's referrer
+      def referrer_user
+        @referrer_user ||= User.find(object.referrer.referrer_id)
+      end
+    end
   end
 end

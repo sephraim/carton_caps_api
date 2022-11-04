@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# User class
 class User < ApplicationRecord
   REFERRAL_CODE_LENGTH = 6
   private_constant :REFERRAL_CODE_LENGTH
@@ -13,7 +16,7 @@ class User < ApplicationRecord
   def create_unique_referral_code
     loop do
       self.referral_code = rand(36**REFERRAL_CODE_LENGTH).to_s(36).upcase
-      break unless self.class.exists?(referral_code: referral_code)
+      break unless self.class.exists?(referral_code:)
     end
   end
 end
