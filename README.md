@@ -2,7 +2,16 @@
 
 ## About
 
-TODO
+Welcome to the Carton Caps API! You can use this API to access Carton Caps user information,
+including user referrals.
+
+Carton Caps is an app that empowers consumers to raise money for the schools they care about,
+while buying the everyday products they love.
+
+## Documentation
+
+For a full list of API endpoints and example requests,
+please visit the [official API documentation](https://sephraim.github.io/carton_caps_api_docs/).
 
 ## Prerequisites
 
@@ -11,8 +20,10 @@ TODO
 All local development and testing is done using Docker,
 so the following must be installed on your machine in order to run the API:
 
-- [Docker](https://docs.docker.com/engine/install/)
-- [Docker Compose](https://docs.docker.com/compose/install/)
+- Docker
+- Docker Compose
+
+The easiest way to install both of these at once is to install [Docker Desktop](https://www.docker.com/get-started/).
 
 ### Initial setup checklist
 
@@ -49,17 +60,23 @@ carton-caps-api-web  | Use Ctrl-C to stop
 ```
 Press `Ctrl-C` to stop viewing the logs.
 
-### 3. TODO Make a request
+### 3. Make a request
+
+Start making requests with your favorite API platform, e.g. Postman, curl, etc. For example:
+
+```bash
+GET http://localhost:3000/api/v1/users/1/referees
+```
+Or just open http://localhost:3000/api/v1/users/1/referees in a web browser.
+
+For a full list of API endpoints and example requests,
+please visit the [official API documentation](https://sephraim.github.io/carton_caps_api_docs/).
 
 ### 4. Stop & destroy containers
 
 ```bash
 dev/stop
 ```
-
-## View the docs / make some requests
-
-TODO
 
 ## Run tests
 
