@@ -14,7 +14,8 @@ docker volume create carton-caps-api-mysql
 docker compose build
 
 # Create the development/test databases (including seeds)
-docker compose run --rm web wait-for-it --strict --timeout=30 db:3306 -- bin/rails db:setup
+docker compose run --rm -e RAILS_ENV=development web wait-for-it --strict --timeout=60 db:3306 -- bin/rails db:setup
+docker compose run --rm -e RAILS_ENV=test web wait-for-it --strict --timeout=30 db:3306 -- bin/rails db:setup
 
 # Stop remaining service(s) & destroy containers
 docker compose down

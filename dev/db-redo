@@ -8,4 +8,5 @@ set -eu
 rm -rf db/schema.rb
 
 # Remove and then re-create the development/test databases (including seeds)
-docker compose run --rm web wait-for-it --strict --timeout=30 db:3306 -- bin/rails db:drop db:create db:migrate db:seed
+docker compose run --rm -e RAILS_ENV=development web wait-for-it --strict --timeout=60 db:3306 -- bin/rails db:drop db:create db:migrate db:seed
+docker compose run --rm -e RAILS_ENV=test web wait-for-it --strict --timeout=30 db:3306 -- bin/rails db:drop db:create db:migrate db:seed
