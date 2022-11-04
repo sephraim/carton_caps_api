@@ -23,7 +23,7 @@ module Api
         @referral = Referral.new(referral_params)
 
         if @referral.save
-          render json: @referral, status: :created, location: @referral
+          render json: @referral, status: :created, location: api_v1_referral_path(@referral)
         else
           render json: @referral.errors, status: :unprocessable_entity
         end

@@ -14,37 +14,8 @@ module Api
         assert_response :success
       end
 
-      test 'should create referral' do
-        assert_difference('Referral.count') do
-          post api_v1_referrals_url,
-               params: {
-                 referral: {
-                   completed_at: @referral.completed_at,
-                   referee_id: @referral.referee_id,
-                   referrer_id: @referral.referrer_id
-                 }
-               },
-               as: :json
-        end
-
-        assert_response :created
-      end
-
       test 'should show referral' do
         get api_v1_referral_url(@referral), as: :json
-        assert_response :success
-      end
-
-      test 'should update referral' do
-        patch api_v1_referral_url(@referral),
-              params: {
-                referral: {
-                  completed_at: @referral.completed_at,
-                  referee_id: @referral.referee_id,
-                  referrer_id: @referral.referrer_id
-                }
-              },
-              as: :json
         assert_response :success
       end
 
