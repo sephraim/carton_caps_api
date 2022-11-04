@@ -20,13 +20,17 @@ class Api::V1::UsersController < ApplicationController
     if params.include?(:referral_code_used)
       if valid_referral_code?
         if @user.save
+          # User created successfully (valid referral code used)
           create_referral
           render json: @user, status: :created, location: api_v1_user_path(@user)
         else
+          # User creation failed
           render json: @user.errors, status: :unprocessable_entity
         end
       else
-        render json: 'Invalid referral code used.', status: :unprocessable_entity
+        # User creation failed because referral code does not exist
+        msg = { message: 'Referral code does not exist.' }
+        render json: msg, status: :unprocessable_entity
       end
     elsif @user.save
       render json: @user, status: :created, location: api_v1_user_path(@user)
