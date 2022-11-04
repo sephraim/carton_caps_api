@@ -10,8 +10,12 @@ while buying the everyday products they love.
 
 ## Documentation
 
-For a full list of API endpoints and example requests,
-please visit the [official API documentation](https://sephraim.github.io/carton_caps_api_docs/).
+For information regarding getting the Carton Caps API up and running locally, you're in the right spot.
+
+For additional information:
+
+- [API design documentation](https://sephraim.github.io/carton_caps_api_docs/design-docs.pdf) - Discover how the Carton Caps mobile app interacts with the API
+- [Official API Reference](https://sephraim.github.io/carton_caps_api_docs/) - View a full list of API endpoints and example requests/responses
 
 ## Prerequisites
 
@@ -70,9 +74,11 @@ GET http://localhost:3000/api/v1/users/1/referees
 Or just open http://localhost:3000/api/v1/users/1/referees in a web browser.
 
 For a full list of API endpoints and example requests,
-please visit the [official API documentation](https://sephraim.github.io/carton_caps_api_docs/).
+please visit the [official API reference page](https://sephraim.github.io/carton_caps_api_docs/).
 
 ### 4. Stop & destroy containers
+
+When you are finished running the application, you can stop & destroy the running containers:
 
 ```bash
 dev/stop
@@ -84,4 +90,12 @@ Tests can be run using the following command:
 
 ```bash
 dev/test
+```
+
+## Run Rubocop linting
+
+Rubocop linting can be run using the following command:
+
+```bash
+dev/rubocop
 ```
