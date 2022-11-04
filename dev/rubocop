@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -eu
+
+# Run Rubocop linting
+
+docker compose run --no-deps --rm web rubocop "$@"
