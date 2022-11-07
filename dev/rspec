@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -eu
+
+# Run RSpec tests
+
+docker compose run --rm web wait-for-it --strict --timeout=30 db:3306 -- bundle exec rspec "$@"

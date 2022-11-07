@@ -8,7 +8,7 @@ module Api
 
       # GET api/v1/referrals
       def index
-        @referrals = Referral.where(params.permit(:referrer_id, :referee_id))
+        @referrals = Referral.where(query_params)
 
         render json: @referrals
       end
@@ -45,14 +45,19 @@ module Api
 
       private
 
-      # Use callbacks to share common setup or constraints between actions.
+      # Use callbacks to share common setup or constraints between actions
       def set_referral
         @referral = Referral.find(params[:id])
       end
 
-      # Only allow a list of trusted parameters through.
+      # Only allow a list of trusted referral parameters through
       def referral_params
         params.require(:referral).permit(:referrer_id, :referee_id, :completed_at)
+      end
+
+      # Only allow a list of trusted query parameters through
+      def query_params
+        params.permit(:referrer_id, :referee_id)
       end
     end
   end

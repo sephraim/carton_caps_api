@@ -1,7 +1,0 @@
-#!/bin/bash
-
-set -eu
-
-# Run tests
-
-docker compose run --rm web wait-for-it --strict --timeout=30 db:3306 -- bin/rails test

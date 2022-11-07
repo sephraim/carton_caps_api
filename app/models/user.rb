@@ -7,6 +7,11 @@ class User < ApplicationRecord
 
   before_create :create_unique_referral_code
 
+  validates :first_name, :last_name, presence: true
+  validates :birthdate, format: { with: /\A\d{4}-\d{1,2}-\d{1,2}\z/, message: 'is invalid; use format YYYY-MM-DD' }
+  validates :zip_code, numericality: { only_integer: true, in: (10_000..99_999) }
+  validates :referral_code, uniqueness: true
+
   # NOTE: if a user gets destroyed then all its referrals also get destroyed
   has_one :referrer, class_name: 'Referral', foreign_key: 'referee_id', dependent: :destroy
   has_many :referees, class_name: 'Referral', foreign_key: 'referrer_id', dependent: :destroy

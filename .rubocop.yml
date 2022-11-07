@@ -1,8 +1,19 @@
 AllCops:
   NewCops: enable
   Exclude:
-    - bin/**/*
+    - '**/db/migrate/*'
+    - '**/db/schema.rb'
+    - '**/Gemfile.lock'
+    - '**/rails'
+    - '**/vendor/**/*'
+    - 'bin/*'
+    - 'spec/spec_helper.rb'
+    - 'spec/rails_helper.rb'
 
 Metrics/MethodLength:
   Exclude:
-    - app/controllers/**/*
+    - 'app/controllers/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'

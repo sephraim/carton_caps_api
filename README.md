@@ -86,13 +86,13 @@ dev/stop
 
 ## Run tests
 
-Tests can be run using the following command:
+RSpec tests can be run using the following command:
 
 ```bash
-dev/test
+dev/rspec
 ```
 
-## Run Rubocop linting
+## Run linting
 
 Rubocop linting can be run using the following command:
 
